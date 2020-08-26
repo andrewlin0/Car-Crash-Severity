@@ -19,9 +19,34 @@ There are 37 features we can utilize to help predict how severe a car crash will
 This data will be used for supervised machine learning.
 
 ### 2.2 Cleaning the Data
-  To get a taste of the data, I did df.head() to see what we have, df.columns to get all the columns, and then df.describe to look for unusual observations. Something I found interesting was that there was an accident that involved 81 people, but not only that, grouping by PERSONCOUNT and VEHCOUNT revealed that it involved only 2 vehicles! Not too sure what happened there, but that is definitely an anomaly. 
+  To get a taste of the data, I did df.head() to see what we have, df.columns to get all the columns, and then df.describe to look for unusual observations. Something I found interesting was that there was an accident that involved 81 people, but not only that, grouping by PERSONCOUNT and VEHCOUNT revealed that it involved only 2 vehicles! Not too sure what happened there, but that is definitely an anomaly. I removed that observation to reduce noise.
   
   There were several variables with a ton of missing values. For the variables that I decided to keep in the end, I decided to impute them with the mode of each variable. This probably introduced slight bias, but in the end the model did slightly better with those imputed values than leaving them blank. I would like to have done some sort of more advanced imputation like knn or something with distance to get better entries, but that is beyond me for now.
+  
+  Removing Outliers
+
+  After looking at the scatter plot and looking at the mean and standard deviations of PERSONCOUNT and VEHCOUNT, I decided to drop all the observations that were more than 2 standard deviations away from the mean to reduce variability. I calculated what 2 standard deviations above would be for both variables then rounded down and removed all observations that were greater than or equal to that number. I looked at these two variables specifically because I figured that the more people and vehicles involved would probably increase the chance of severity. However, after plotting these two variables together on a scatter plot, it was shown that it did not take 12 vehicles to affect over 20 people. In fact, there were more cases where only 2 vehicles were needed to affect 10 or more people.
+
+  For this, 
+
+  Mean of PERSONCOUNT = 2.44
+  STD of PERSONCOUNT = 1.35
+
+  2 STD above = 5.14 ~ 5
+
+  11531 observations where PERSONCOUNT >= 5
+  __________________________________________________
+
+  Mean of VEHCOUNT = 1.92
+  STD of VEHCOUNT = .63
+
+  2 STD above = 3.18 ~ 3
+
+  16190 observations where VEHCOUNT >= 3
+
+
+  11531+16190 = 27721 total observations that are considered to be outliers
+  27721/194673 = .142 ~ 14.2% of total observations dropped from the entire dataset
   
 ### 2.3 Feature Selection
   
@@ -33,5 +58,10 @@ This data will be used for supervised machine learning.
  
 The final features I kept are ADDRTYPE, COLLISIONTYPE, ROADCOND, LIGHTCOND, PERSONCOUNT, and VEHCOUNT. After I encoded the categorical variables, I then did a final X.corr() to check that there wasn't an absurd correlation (defining as >= .8) between two variables.
 
-## Methodology
+### Methodology
 
+## Data Exploration
+
+  I plotted PERSONCOUNT and VEHCOUNT together to find any anomalies. 
+  
+  
