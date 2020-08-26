@@ -23,7 +23,7 @@ This data will be used for supervised machine learning.
   
   There were several variables with a ton of missing values. For the variables that I decided to keep in the end, I decided to impute them with the mode of each variable. This probably introduced slight bias, but in the end the model did slightly better with those imputed values than leaving them blank. I would like to have done some sort of more advanced imputation like knn or something with distance to get better entries, but that is beyond me for now.
   
-  Removing Outliers
+  *Removing Outliers*
 
   After looking at the scatter plot and looking at the mean and standard deviations of PERSONCOUNT and VEHCOUNT, I decided to drop all the observations that were more than 2 standard deviations away from the mean to reduce variability. I calculated what 2 standard deviations above would be for both variables then rounded down and removed all observations that were greater than or equal to that number. I looked at these two variables specifically because I figured that the more people and vehicles involved would probably increase the chance of severity. However, after plotting these two variables together on a scatter plot, it was shown that it did not take 12 vehicles to affect over 20 people. In fact, there were more cases where only 2 vehicles were needed to affect 10 or more people.
 
@@ -61,7 +61,7 @@ The final features I kept are ADDRTYPE, COLLISIONTYPE, ROADCOND, LIGHTCOND, PERS
 
 ### Methodology
 
-## 3.1 Data Exploration
+## 3.1 Data Exploration (all the visualizations will be found in the presentation since I cannot put images in this file)
 
   I plotted PERSONCOUNT and VEHCOUNT together to find any anomalies. 
   
@@ -70,4 +70,6 @@ The final features I kept are ADDRTYPE, COLLISIONTYPE, ROADCOND, LIGHTCOND, PERS
 ## 3.2 Machine Learnings
 
   I implemented KNN, Decision Tree, and Logistic Regression to see which algorithm would give the most accurate results.
+  
+  
   
