@@ -61,8 +61,13 @@ The final features I kept are ADDRTYPE, COLLISIONTYPE, ROADCOND, LIGHTCOND, PERS
 
 ### Methodology
 
-## Data Exploration
+## 3.1 Data Exploration
 
   I plotted PERSONCOUNT and VEHCOUNT together to find any anomalies. 
   
+  I ran a correlation matrix on my chosen features (before encoding the categorical variables) to find any signs of multicollinearity between PERSONCOUNT and VEHCOUNT. There wasn't any.
+  
+## 3.2 Machine Learnings
+
+  I implemented KNN, Decision Tree, and Logistic Regression to see which algorithm would give the most accurate results.
   
