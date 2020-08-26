@@ -46,6 +46,7 @@ This data will be used for supervised machine learning.
 
 
   11531+16190 = 27721 total observations that are considered to be outliers
+  
   27721/194673 = .142 ~ 14.2% of total observations dropped from the entire dataset
   
 ### 2.3 Feature Selection
