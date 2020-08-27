@@ -71,9 +71,9 @@ The features I kept are ADDRTYPE, COLLISIONTYPE, ROADCOND, LIGHTCOND, PERSONCOUN
   - LIGHTCOND (encoded version)
   - veh_per_pep
 
-### Methodology
+## Methodology
 
-## 3.1 Data Exploration 
+### 3.1 Data Exploration 
 (all the visualizations will be found in the presentation since I cannot put images in this file)
 
   I plotted PERSONCOUNT and VEHCOUNT together to find any anomalies. 
@@ -83,7 +83,7 @@ The features I kept are ADDRTYPE, COLLISIONTYPE, ROADCOND, LIGHTCOND, PERSONCOUN
   While experimenting with feature extraction, I discovered that there were some observations that had VEHCOUNT = 0 or PERSONCOUNT = 0, which kind of makes no sense, so I removed those observations since it didn't seem like it would be practical to use in this model.
   
   
-## 3.2 Machine Learnings
+### 3.2 Machine Learnings
 
   I implemented KNN, Decision Tree, and Logistic Regression to see which algorithm would give the most accurate results.
   
