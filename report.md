@@ -23,6 +23,8 @@ This data will be used for supervised machine learning.
   
   There were several variables with a ton of missing values. For the variables that I decided to keep in the end, I decided to impute them with the mode of each variable. This probably introduced slight bias, but in the end the model did slightly better with those imputed values than leaving them blank. I would like to have done some sort of more advanced imputation like knn or something with distance to get better entries, but that is beyond me for now.
   
+  I removed all observations where PERSONCOUNT = 0 or VEHCOUNT = 0 because it makes no sense to predict the severity of a crash for nobody or no vehicle.
+  
   *Removing Outliers*
 
   After looking at the scatter plot and looking at the mean and standard deviations of PERSONCOUNT and VEHCOUNT, I decided to drop all the observations that were more than 2 standard deviations away from the mean to reduce variability. I calculated what 2 standard deviations above would be for both variables then rounded down and removed all observations that were greater than or equal to that number. I looked at these two variables specifically because I figured that the more people and vehicles involved would probably increase the chance of severity. However, after plotting these two variables together on a scatter plot, it was shown that it did not take 12 vehicles to affect over 20 people. In fact, there were more cases where only 2 vehicles were needed to affect 10 or more people.
@@ -57,7 +59,17 @@ This data will be used for supervised machine learning.
   
   This left the variables SEGLANEKEY, CROSSWALKKEY, JUNCTIONTYPE, WEATHER, PEDCOUNT, PEDCYLCOUNT, HITPARKEDCAR, UNDERINFL, ADDRTYPE, COLLISIONTYPE, PERSONCOUNT, VEHCOUNT, ROADACOND, and LIGHTCOND. I got rid of SEGLANEKEY, CROSSWALKKEY, and JUNCTIONTYPE because ADDRTYPE pretty much had all the information summed up and I didn't want a ton of categorical variables. I also got rid of PEDCOUNT and PEDCYLCOUNT since PERSONCOUNT already included that data in it. This helped bring down the number of potential variables. I thought about what to do with WEATHER and ROADCOND since they are essentially the same thing (ex. If the weather is Raining the road is probably Wet); I ended up dropping WEATHER because I felt ROADCOND contributed more information since it had values such as Oil, Sand/Mud/Dirt, and Ice. Finally, I decided to drop HITPARKEDCAR because it didn't seem significant and UNDERINFL because the vast majority of the observations had a N for the UNDERINFL attribute. Doing a quick groupby with SEVERITYCODE and UNDERINFL also revealed that there were more accidents with severity code 1 when UNDERINFL was Y than there were accidents with severity code 2 when UNDERINFL was N.
  
-The final features I kept are ADDRTYPE, COLLISIONTYPE, ROADCOND, LIGHTCOND, PERSONCOUNT, and VEHCOUNT. After I encoded the categorical variables, I then did a final X.corr() to check that there wasn't an absurd correlation (defining as >= .8) between two variables.
+The features I kept are ADDRTYPE, COLLISIONTYPE, ROADCOND, LIGHTCOND, PERSONCOUNT, and VEHCOUNT. After I encoded the categorical variables, I then did a final X.corr() to check that there wasn't an absurd correlation (defining as >= .8) between two variables.
+
+### 2.4 Feature Extraction
+  I made a new feature called veh_per_pep, which is supposed to mean vehicles per person. I decided to make this variable because I felt like it would be more informative to have the ratio of vehicles to person and it also helped scale down the values a little. I also tested a decision tree model using this feature and the results were slightly better, so I decided to keep this and drop PERSONCOUNT and VEHCOUNT.
+  
+  The Final Features used in the model:
+  - ADDRTYPE (encoded version)
+  - COLLISIONTYPE (encoded version)
+  - ROADCOND (encoded version)
+  - LIGHTCOND (encoded version)
+  - veh_per_pep
 
 ### Methodology
 
@@ -66,6 +78,9 @@ The final features I kept are ADDRTYPE, COLLISIONTYPE, ROADCOND, LIGHTCOND, PERS
   I plotted PERSONCOUNT and VEHCOUNT together to find any anomalies. 
   
   I ran a correlation matrix on my chosen features (before encoding the categorical variables) to find any signs of multicollinearity between PERSONCOUNT and VEHCOUNT. There wasn't any.
+  
+  While experimenting with feature extraction, I discovered that there were some observations that had VEHCOUNT = 0 or PERSONCOUNT = 0, which kind of makes no sense, so I removed those observations since it didn't seem like it would be practical to use in this model.
+  
   
 ## 3.2 Machine Learnings
 
