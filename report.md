@@ -73,7 +73,8 @@ The features I kept are ADDRTYPE, COLLISIONTYPE, ROADCOND, LIGHTCOND, PERSONCOUN
 
 ### Methodology
 
-## 3.1 Data Exploration (all the visualizations will be found in the presentation since I cannot put images in this file)
+## 3.1 Data Exploration 
+(all the visualizations will be found in the presentation since I cannot put images in this file)
 
   I plotted PERSONCOUNT and VEHCOUNT together to find any anomalies. 
   
