@@ -101,8 +101,9 @@ The features I kept are ADDRTYPE, COLLISIONTYPE, ROADCOND, LIGHTCOND, PERSONCOUN
   
   The results were: 
   
-  Algorithm           Jaccard     F1-Score    LogLoss
-  KNN                   0.77        0.73         NA
-  DecisionTree          0.77        0.72         NA
-  LogisticRegression    0.77        0.72         NA
+  KNN: 0.77 Jaccard, 0.73 F1-Score
+  
+  DecisionTree: 0.77 Jaccard, 0.72 F1-Score 
+  
+  LogisticRegression: 0.77 Jaccard, 0.72 F1-Score, .46 LogLoss       
   
