@@ -70,6 +70,8 @@ The features I kept are ADDRTYPE, COLLISIONTYPE, ROADCOND, LIGHTCOND, PERSONCOUN
   - ROADCOND (encoded version)
   - LIGHTCOND (encoded version)
   - veh_per_pep
+  
+  In total, the model had 32 features.
 
 ## Methodology
 
@@ -122,7 +124,7 @@ The features I kept are ADDRTYPE, COLLISIONTYPE, ROADCOND, LIGHTCOND, PERSONCOUN
   Some observations I noted were that it doesn't take a whole lot of vehicles to impact 10+ people since most of the accidents that involved more than 10 people happened when only 2 cars were involved. I also noted that there were some observations that had 0 people or vehicles involved in the accident. Those didn't make much sense at all.
   
 ### 5.2 Recommendations
-  I would like to have imputed the data in a better way that would have led to some sort of improvement rather than just imputing the mode. Doing some sort of distance based imputation would probably have been ideal. If there is any way to get data on the type of vehicle or age of the persons involved in the accident then that would probably help out a lot. I would also have liked to seen more than just severity codes 1 and 2. In the metadata, it referenced severity codes 2b and 3. I feel like that would have helped and it would be more insightful for this sort of project.
+  I would like to have imputed the data in a better way that would have led to some sort of improvement rather than just imputing the mode. Doing some sort of distance based imputation would probably have been ideal. If there is any way to get data on the type of vehicle or age of the people involved in the accident then that would probably help out a lot. I would also have liked to seen more than just severity codes 1 and 2. In the metadata, it referenced severity codes 2b and 3. I feel like that would have helped and it would be more insightful for this sort of project.
   
 ## Conclusion
 
