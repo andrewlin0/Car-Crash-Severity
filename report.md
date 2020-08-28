@@ -105,5 +105,9 @@ The features I kept are ADDRTYPE, COLLISIONTYPE, ROADCOND, LIGHTCOND, PERSONCOUN
   
   DecisionTree: 0.77 Jaccard, 0.72 F1-Score 
   
-  LogisticRegression: 0.77 Jaccard, 0.72 F1-Score, .46 LogLoss       
+  Logistic Regression: 0.77 Jaccard, 0.72 F1-Score, .46 LogLoss       
   
+  All 3 models had the same Jaccard score, but KNN had the highest F1-Score by only .01. Overall, I would choose Logistic Regression to solve this problem.
+  
+### 4.2 Confusion Matrix and Classification Report Insights
+  After plotting the confusion matrices for each model, I found that all 3 models had difficulty predicting a crash with severity code 2 correctly. KNN did the worst at that. All 3 models did really well at predicting accidents with severity code 1 though. 
