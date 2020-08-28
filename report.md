@@ -76,7 +76,7 @@ The features I kept are ADDRTYPE, COLLISIONTYPE, ROADCOND, LIGHTCOND, PERSONCOUN
 ### 3.1 Data Exploration 
 (all the visualizations will be found in the presentation since I cannot put images in this file)
 
-  I plotted PERSONCOUNT and VEHCOUNT together to find any anomalies. 
+  I plotted PERSONCOUNT and VEHCOUNT together to find any anomalies. There was an observation that had 81 people involved, but only 2 vehicles were in the accident.  
   
   I ran a correlation matrix on my chosen features (before encoding the categorical variables) to find any signs of multicollinearity between PERSONCOUNT and VEHCOUNT. There wasn't any.
   
@@ -86,6 +86,12 @@ The features I kept are ADDRTYPE, COLLISIONTYPE, ROADCOND, LIGHTCOND, PERSONCOUN
 ### 3.2 Machine Learnings
 
   I implemented KNN, Decision Tree, and Logistic Regression to see which algorithm would give the most accurate results.
+  
+  The KNN model had a best accuracy of 76.725% at k = 28. Intuitively I thought that KNN would be a good choice under the assumption that crashes that happen under similar circumstances would essentially have the same severity code, but since this performed the worst out of the three models I thought to myself why. My conclusion is that we did not have any data on things like type of cars involved or the age of the people involved. With those variables, I feel like knn would work better because those variables would definitely shed light on how severe a crash could be for someone.
+  
+  The Decision Tree model had a best accuracy of 77.312% at depth = 3. This model took the shortest time to train and did pretty well. I guess a deicison tree would be appropriate for this dataset since there were only two different severity codes and the model would be learning by following different routes.
+  
+  The Logistic Regression model had a best accuracy of 77.315% with parameters C = .001, solver = liblinear, and penalty = l1. I think this model makes the most sense, not because it performed the best, but this dataaset only 2 labels: 1 or 2. This is good for logistic regression and logistic regression also gives probabilties about what label each observation could have and using those probabilties is how it makes decisions. 
   
   
   
