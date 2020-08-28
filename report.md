@@ -1,27 +1,27 @@
 ## Introduction
 
 ### 1.1 Background
-According to https://www.driverknowledge.com/car-accident-statistics/, there are 6 million car accidents on average a year. Of those, 3 million experience injuries, 2 million of which are permanent injuries. How can one know if the accident they may possibly be in is going to leave them with an no injury, injury, serious injury, or death? This is the goal of this project.
+  According to https://www.driverknowledge.com/car-accident-statistics/, there are 6 million car accidents on average a year. Of those, 3 million experience injuries, 2 million of which are permanent injuries. How can one know if the accident they may possibly be in is going to leave them with an no injury, injury, serious injury, or death? This is the goal of this project.
 
 ### 1.2 Business Problem
-The problem presented is how to predict how severe a car crash is given the conditions it occurs in.  We are trying to inform people of the severity of a car accident under certain conditions. This information can help people make their own judgements about if they want to go down a specific way or wait for better conditions. With this information, the number of car accidents resulting in injury or worse may be reduced.
+  The problem presented is how to predict how severe a car crash is given the conditions it occurs in.  We are trying to inform people of the severity of a car accident under certain conditions. This information can help people make their own judgements about if they want to go down a specific way or wait for better conditions. With this information, the number of car accidents resulting in injury or worse may be reduced.
 
 ### 1.3 People of Interest
-This is useful to the general public because with this information they can decide when and where they are going to travel to minimize severity of car accidents if they do get in one. 
+  This is useful to the general public because with this information they can decide when and where they are going to travel to minimize severity of car accidents if they do get in one. 
 
 ## The Data
 
 ### 2.1 The Source 
-The data I am using is the data given in this course, which is for Seattle and the timeframe this data was gathered in is 2004 - Present. 
+  The data I am using is the data given in this course, which is for Seattle and the timeframe this data was gathered in is 2004 - Present. 
 
-There are 37 features we can utilize to help predict how severe a car crash will be. There are also 194673 observations we can learn from. The data includes features such as road/light conditions, type of collision, pedestrian count, severity, and vehicle count.
+  There are 37 features we can utilize to help predict how severe a car crash will be. There are also 194673 observations we can learn from. The data includes features such as road/light conditions, type of collision, pedestrian count, severity, and vehicle count.
 
-This data will be used for supervised machine learning.
+  This data will be used for supervised machine learning.
 
 ### 2.2 Cleaning the Data
   To get a taste of the data, I did df.head() to see what we have, df.columns to get all the columns, and then df.describe to look for unusual observations. Something I found interesting was that there was an accident that involved 81 people, but not only that, grouping by PERSONCOUNT and VEHCOUNT revealed that it involved only 2 vehicles! Not too sure what happened there, but that is definitely an anomaly. I removed that observation to reduce noise.
   
-  There were several variables with a ton of missing values. For the variables that I decided to keep in the end, I decided to impute them with the mode of each variable. This probably introduced slight bias, but in the end the model did slightly better with those imputed values than leaving them blank. I would like to have done some sort of more advanced imputation like knn or something with distance to get better entries, but that is beyond me for now.
+  There were several variables with a ton of missing values. For the variables that I decided to keep in the end, I decided to impute them with the mode of each variable. This probably introduced slight bias, but in the end the model did slightly better with those imputed values than leaving them blank. I would like to have done some sort of more advanced imputation, but I need to do further research on that.
   
   I removed all observations where PERSONCOUNT = 0 or VEHCOUNT = 0 because it makes no sense to predict the severity of a crash for nobody or no vehicle.
   
@@ -93,5 +93,16 @@ The features I kept are ADDRTYPE, COLLISIONTYPE, ROADCOND, LIGHTCOND, PERSONCOUN
   
   The Logistic Regression model had a best accuracy of 77.315% with parameters C = .001, solver = liblinear, and penalty = l1. I think this model makes the most sense, not because it performed the best, but this dataaset only 2 labels: 1 or 2. This is good for logistic regression and logistic regression also gives probabilties about what label each observation could have and using those probabilties is how it makes decisions. 
   
+## Results
+
+### 4.1 Evaluation Metrics
+
+  For the 3 models, I calculated 2 different evaluation metrics, Jaccard score and F1-score, for KNN and Decision Tree, and for Logistic Regression I calculated those two and also Log Loss.
   
+  The results were: 
+  
+  Algorithm           Jaccard     F1-Score    LogLoss
+  KNN                   0.77        0.73         NA
+  DecisionTree          0.77        0.72         NA
+  LogisticRegression    0.77        0.72         NA
   
