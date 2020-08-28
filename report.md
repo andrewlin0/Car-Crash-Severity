@@ -110,4 +110,25 @@ The features I kept are ADDRTYPE, COLLISIONTYPE, ROADCOND, LIGHTCOND, PERSONCOUN
   All 3 models had the same Jaccard score, but KNN had the highest F1-Score by only .01. Overall, I would choose Logistic Regression to solve this problem.
   
 ### 4.2 Confusion Matrix and Classification Report Insights
-  After plotting the confusion matrices for each model, I found that all 3 models had difficulty predicting a crash with severity code 2 correctly. KNN did the worst at that. All 3 models did really well at predicting accidents with severity code 1 though. 
+  After plotting the confusion matrices for each model, I found that all 3 models had difficulty predicting a crash with severity code 2 correctly. KNN did the worst at that. All 3 models did really well at predicting accidents with severity code 1 though. Since I don't have a true test set, I cannot train my model on the whole dataset and then run it on the test set to see how well it performs, so these metrics are on the test set derived from the original dataset.
+  
+  The confusion matrices and classifcation reports will be in the presentation.
+  
+  
+## Discussion
+
+### 5.1 Observations
+
+  Some observations I noted were that it doesn't take a whole lot of vehicles to impact 10+ people since most of the accidents that involved more than 10 people happened when only 2 cars were involved. I also noted that there were some observations that had 0 people or vehicles involved in the accident. Those didn't make much sense at all.
+  
+### 5.2 Recommendations
+  I would like to have imputed the data in a better way that would have led to some sort of improvement rather than just imputing the mode. Doing some sort of distance based imputation would probably have been ideal. If there is any way to get data on the type of vehicle or age of the persons involved in the accident then that would probably help out a lot. I would also have liked to seen more than just severity codes 1 and 2. In the metadata, it referenced severity codes 2b and 3. I feel like that would have helped and it would be more insightful for this sort of project.
+  
+## Conclusion
+
+### 6.1 Concluding Thoughts
+  In this project, I aimed to develop a model that would help people see how severe a crash would be if they get in one under certain circumstances. Through feature selection I used ADDRTYPE, COLLISIONTYPE, ROADCOND, LIGHTCOND, PERSONCOUNT, and VEHCOUNT. Then I did feature extraction and made a new variable called veh_per_pep, which is supposed to be the ratio of vehicles to people. The final model used the encoded versions of ADDRTYPE, COLLISIONTYPE, ROADCOND, and LIGHTCOND and the new feature veh_per_pep. This model can be a starting point to develop a way to inform people about the severity of a crash they could be in. 
+ 
+
+  
+  
