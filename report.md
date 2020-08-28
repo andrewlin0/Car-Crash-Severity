@@ -127,7 +127,7 @@ The features I kept are ADDRTYPE, COLLISIONTYPE, ROADCOND, LIGHTCOND, PERSONCOUN
 ## Conclusion
 
 ### 6.1 Concluding Thoughts
-  In this project, I aimed to develop a model that would help people see how severe a crash would be if they get in one under certain circumstances. Through feature selection I used ADDRTYPE, COLLISIONTYPE, ROADCOND, LIGHTCOND, PERSONCOUNT, and VEHCOUNT. Then I did feature extraction and made a new variable called veh_per_pep, which is supposed to be the ratio of vehicles to people. The final model used the encoded versions of ADDRTYPE, COLLISIONTYPE, ROADCOND, and LIGHTCOND and the new feature veh_per_pep. This model can be a starting point to develop a way to inform people about the severity of a crash they could be in. 
+  In this project, I aimed to develop a model that would help people see how severe a crash would be if they get in one under certain circumstances. Through feature selection I used ADDRTYPE, COLLISIONTYPE, ROADCOND, LIGHTCOND, PERSONCOUNT, and VEHCOUNT. Then I did feature extraction and made a new variable called veh_per_pep, which is supposed to be the ratio of vehicles to people. The final model used the encoded versions of ADDRTYPE, COLLISIONTYPE, ROADCOND, and LIGHTCOND and the new feature veh_per_pep. The type of model that I decided would be best is a Logistic Regression model. This model can be a starting point to develop a way to inform people about the severity of a crash they could be in. Since it is a Logistic Regression, it can give probabilities about the different types of severity possibilities to be displayed on a screen.
  
 
   
